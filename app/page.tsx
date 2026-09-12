@@ -5,14 +5,16 @@ import {
   ChevronRight,
   CircleArrowOutUpRight,
 } from 'lucide-react';
+import { GlobalCta, LocationSection, SiteFooter } from './components/SiteClosing';
 
 const navigation = [
   ['Home', '#home'],
-  ['Training', '#training'],
-  ['Programs', '#programs'],
-  ['Coaches', '#about'],
-  ['Tournaments', '#training'],
-  ['Membership', '#contact'],
+  ['Training', '/training'],
+  ['Coaches', '/coaches'],
+  ['Booking', '/booking'],
+  ['Tournaments', '/tournaments'],
+  ['Membership', '/membership'],
+  ['Contact', '/contact'],
 ] as const;
 
 export default function Home() {
@@ -48,8 +50,12 @@ export default function Home() {
           </a>
         </header>
 
-        <h1 id="hero-title" className="hero-title">
-          PLAY STRONG<span>.</span>
+        <h1 id="hero-title" className="hero-title" aria-label="Play Strong.">
+          <svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+            <text x="0" y="190" textLength="1000" lengthAdjust="spacingAndGlyphs">
+              PLAY STRONG<tspan className="hero-period">.</tspan>
+            </text>
+          </svg>
         </h1>
         <img
           className="hero-player"
@@ -94,8 +100,10 @@ export default function Home() {
 
         <div className="about-visual-grid">
           <div className="player-feature">
-            <div className="court-lines" aria-hidden="true" />
-            <div className="feature-message"><span>TRAIN WITH</span><strong>PURPOSE.</strong></div>
+            <img
+              src="/assets/pickleball-feature-man.webp"
+              alt="Pickleball player returning a shot during a professional match"
+            />
             <div className="feature-stats">
               <div><strong>500<span>+</span></strong><p>Active Players</p></div>
               <div><strong>20<span>+</span></strong><p>Professional Coaches</p></div>
@@ -104,9 +112,11 @@ export default function Home() {
           </div>
 
           <div className="experience-card">
-            <div className="experience-photo" aria-label="Pickleballs moving across a blue court">
-              <span className="ball ball-one" /><span className="ball ball-two" />
-              <span className="ball ball-three" /><span className="paddle-shadow" />
+            <div className="experience-photo">
+              <img
+                src="/assets/pickleball-feature-woman.jpg"
+                alt="Pickleball player reaching forward for a low shot at the net"
+              />
             </div>
             <div className="experience-number">
               <strong>15</strong><p>Years of<br />Excellence</p>
@@ -124,33 +134,77 @@ export default function Home() {
         <div className="section-kicker"><span>B</span><p>Training Program</p><i /></div>
         <div id="programs" className="program-grid">
           <article className="program-card program-card-soft">
+            <img
+              className="program-image program-image-beginner"
+              src="/assets/training-beginner.jpg"
+              alt="Beginner pickleball player practicing on an outdoor court"
+            />
             <span className="program-index">01</span>
             <div className="program-content"><p>Build the foundations</p><h3>Beginner Training</h3></div>
             <a href="#contact" aria-label="Explore beginner training"><CircleArrowOutUpRight size={42} strokeWidth={1.25} /></a>
           </article>
           <article className="program-card program-card-coach">
+            <img
+              className="program-image program-image-private"
+              src="/assets/training-private.webp"
+              alt="Pickleball players receiving private coaching on an outdoor court"
+            />
             <span className="program-index">02</span>
-            <div className="coach-figure" aria-hidden="true">
-              <span className="coach-head" /><span className="coach-body" /><span className="coach-paddle" />
-            </div>
             <div className="program-content"><p>James Curtis</p><h3>Private Coaching</h3></div>
             <a href="#contact" aria-label="Explore private coaching"><CircleArrowOutUpRight size={42} strokeWidth={1.25} /></a>
           </article>
           <article className="program-card program-card-dark">
-            <span className="program-index">03</span><div className="speed-ball" aria-hidden="true" />
+            <img
+              className="program-image program-image-advanced"
+              src="/assets/training-advanced.jpg"
+              alt="Advanced pickleball doubles training session on an indoor court"
+            />
+            <span className="program-index">03</span>
             <div className="program-content"><p>Push beyond your limits</p><h3>Advanced Training</h3></div>
             <a href="#contact" aria-label="Explore advanced training"><CircleArrowOutUpRight size={42} strokeWidth={1.25} /></a>
           </article>
         </div>
       </section>
 
-      <footer id="contact" className="footer">
-        <div><p className="eyebrow">READY TO PLAY?</p><h2>BOOK YOUR FIRST LESSON.</h2></div>
-        <a className="button button-light" href="mailto:hello@acepickle.club">
-          hello@acepickle.club
-          <span className="button-icon"><ArrowUpRight size={14} strokeWidth={2.6} /></span>
-        </a>
-      </footer>
+      <section className="home-window home-booking-window" aria-labelledby="home-booking-title">
+        <div className="home-window-visual">
+          <img src="/assets/booking-pickleball-poster.png" alt="Graphic pickleball poster featuring a player and the words Play With Purpose" />
+        </div>
+        <div className="home-window-copy">
+          <p className="eyebrow">Book your court time</p>
+          <h2 id="home-booking-title">MAKE TIME<br />TO <em>PLAY.</em></h2>
+          <p>Private lessons, group sessions and junior training—choose your moment and we’ll take care of the details.</p>
+          <a className="button button-dark" href="/booking">Book a session<span className="button-icon"><ArrowRight size={14} strokeWidth={2.6} /></span></a>
+        </div>
+      </section>
+
+      <section className="home-window home-tournaments-window" aria-labelledby="home-tournaments-title">
+        <div className="home-window-copy">
+          <p className="eyebrow">Competition for every level</p>
+          <h2 id="home-tournaments-title">CHASE THE<br /><em>NEXT POINT.</em></h2>
+          <p>From first-match nerves to club finals, our tournament calendar gives every player a reason to step up.</p>
+          <a className="home-window-link" href="/tournaments">Explore tournaments <ArrowUpRight size={18} /></a>
+        </div>
+        <div className="home-tournament-board" aria-label="Tournament formats">
+          <div><span>01</span><strong>OPEN<br />DOUBLES</strong><p>Every Saturday</p></div>
+          <div><span>02</span><strong>CLUB<br />FINALS</strong><p>Monthly feature</p></div>
+          <div><span>03</span><strong>JUNIOR<br />RALLY</strong><p>School holidays</p></div>
+        </div>
+      </section>
+
+      <section className="home-window home-membership-window" aria-labelledby="home-membership-title">
+        <div className="home-membership-image"><img src="/assets/membership-pickleball-poster.png" alt="Graphic pickleball membership poster featuring a player in a red dress" /></div>
+        <div className="home-window-copy">
+          <p className="eyebrow">Membership made for play</p>
+          <h2 id="home-membership-title">JOIN THE<br /><em>CLUB.<br />PLAY MORE.</em></h2>
+          <p>Unlock priority court access, member-only match play and a welcoming community for every rally.</p>
+          <a className="button button-dark" href="/membership">Explore membership<span className="button-icon"><ArrowRight size={14} strokeWidth={2.6} /></span></a>
+        </div>
+      </section>
+
+      <GlobalCta />
+      <LocationSection />
+      <SiteFooter />
     </main>
   );
 }

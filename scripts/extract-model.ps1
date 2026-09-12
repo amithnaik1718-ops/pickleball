@@ -24,7 +24,13 @@ for ($y = 0; $y -lt $sourceImage.Height; $y++) {
 
     # The source has a neutral white studio backdrop. A soft luminance key keeps
     # the athlete's shaded white clothing while removing the brighter background.
-    if ($minimumChannel -ge 249 -and $channelSpread -le 7) {
+    $isSparkleArtifact =
+      $x -ge [int]($sourceImage.Width * 0.84) -and
+      $y -ge [int]($sourceImage.Height * 0.70)
+
+    if ($isSparkleArtifact) {
+      $alpha = 0
+    } elseif ($minimumChannel -ge 249 -and $channelSpread -le 7) {
       $alpha = 0
     } elseif ($minimumChannel -ge 238 -and $channelSpread -le 12) {
       $alpha = [int](255 * (249 - $minimumChannel) / 11)
@@ -43,3 +49,6 @@ for ($y = 0; $y -lt $sourceImage.Height; $y++) {
 $outputImage.Save($Destination, [System.Drawing.Imaging.ImageFormat]::Png)
 $sourceImage.Dispose()
 $outputImage.Dispose()
+
+Add-Type -Path (Join-Path $PSScriptRoot 'CleanTransparentEdges.cs') -ReferencedAssemblies 'System.Drawing.dll'
+[EdgeCleaner]::Clean($Destination)
