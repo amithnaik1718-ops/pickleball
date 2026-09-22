@@ -6,6 +6,7 @@ import {
   CircleArrowOutUpRight,
 } from 'lucide-react';
 import { GlobalCta, LocationSection, SiteFooter } from './components/SiteClosing';
+import { MobileNavigation } from './components/MobileNavigation';
 
 const navigation = [
   ['Home', '#home'],
@@ -44,6 +45,7 @@ export default function Home() {
               <a key={label} href={href}>{label}</a>
             ))}
           </nav>
+          <MobileNavigation items={navigation} currentPage="Home" />
           <a className="button button-light" href="#contact">
             Book a Lesson
             <span className="button-icon"><ChevronRight size={14} strokeWidth={2.6} /></span>

@@ -8,6 +8,7 @@ import {
   MapPin,
 } from 'lucide-react';
 import { LocationSection, SiteFooter } from '../components/SiteClosing';
+import { MobileNavigation } from '../components/MobileNavigation';
 
 const navigation = [
   ['Home', '/'],
@@ -33,6 +34,7 @@ export default function ContactPage() {
               <a key={label} href={href} aria-current={label === 'Contact' ? 'page' : undefined}>{label}</a>
             ))}
           </nav>
+          <MobileNavigation items={navigation} currentPage="Contact" />
           <a className="button button-light" href="/booking">
             Book a court
             <span className="button-icon"><ChevronRight size={14} strokeWidth={2.6} /></span>

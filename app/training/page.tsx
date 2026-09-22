@@ -7,6 +7,7 @@ import {
   Users,
 } from 'lucide-react';
 import { GlobalCta, SiteFooter } from '../components/SiteClosing';
+import { MobileNavigation } from '../components/MobileNavigation';
 
 const navigation = [
   ['Home', '/'],
@@ -82,6 +83,7 @@ export default function TrainingPage() {
               <a key={label} href={href} aria-current={label === 'Training' ? 'page' : undefined}>{label}</a>
             ))}
           </nav>
+          <MobileNavigation items={navigation} currentPage="Training" />
           <a className="button button-light" href="#contact">
             Book a Lesson
             <span className="button-icon"><ChevronRight size={14} strokeWidth={2.6} /></span>

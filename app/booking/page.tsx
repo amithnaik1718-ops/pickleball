@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { GlobalCta, SiteFooter } from '../components/SiteClosing';
+import { MobileNavigation } from '../components/MobileNavigation';
 import { BookingExperience } from './BookingExperience';
 
 const navigation = [
@@ -34,6 +35,7 @@ export default function BookingPage() {
               <a key={label} href={href} aria-current={label === 'Booking' ? 'page' : undefined}>{label}</a>
             ))}
           </nav>
+          <MobileNavigation items={navigation} currentPage="Booking" />
           <a className="button button-light" href="#booking-form">
             Book a Lesson
             <span className="button-icon"><ChevronRight size={14} strokeWidth={2.6} /></span>

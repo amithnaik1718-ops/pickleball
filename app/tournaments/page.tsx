@@ -10,6 +10,7 @@ import {
   Users,
 } from 'lucide-react';
 import { GlobalCta, SiteFooter } from '../components/SiteClosing';
+import { MobileNavigation } from '../components/MobileNavigation';
 
 const navigation = [
   ['Home', '/'],
@@ -48,6 +49,7 @@ export default function TournamentsPage() {
           <nav aria-label="Primary navigation">
             {navigation.map(([label, href]) => <a key={label} href={href} aria-current={label === 'Tournaments' ? 'page' : undefined}>{label}</a>)}
           </nav>
+          <MobileNavigation items={navigation} currentPage="Tournaments" />
           <a className="button button-light" href="#events">Find an Event<span className="button-icon"><ChevronRight size={14} strokeWidth={2.6} /></span></a>
         </header>
 
